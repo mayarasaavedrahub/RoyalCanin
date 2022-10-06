@@ -1,0 +1,32 @@
+import React from "react";
+import {useNavigate} from 'react-router-dom';
+import "./styles.scss";
+
+
+function Modal() {
+
+  const navigate = useNavigate();
+
+  const navigateToHome = () => {    
+    navigate('http://localhost:3001/rc_credenciamento');
+  };
+
+
+
+  return (
+    <div className="modal-container">
+      <div className="modal">
+                <div className="modal-body">
+          <h2>Obrigado! Sua resposta foi salva com sucesso!</h2>
+        </div>
+        <button onClick={navigateToHome}>OK</button>
+        
+      </div>
+      
+    </div>
+  );
+}
+
+
+
+export default Modal;

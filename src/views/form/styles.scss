@@ -1,0 +1,84 @@
+h1 {
+    color: #e2001a;  
+    font-weight: bold;  
+  }
+  h3 {
+    color: #e2001a;    
+    font-weight: bold; 
+  }
+
+
+//div que contem imagem e txto e o footer
+  .form-container {
+    background-color: #fff;
+    justify-content: space-evenly;
+    color: #e2001a;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold; 
+    line-height: 70%;
+    display: flex;
+
+    
+    min-width: 50%;
+    max-width: 90%;
+   
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+
+    padding: 10px;
+    
+  }
+
+  
+//texto header
+  .form-header {
+    text-align: center;
+    justify-content: center;
+    color: #606060;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold; 
+    line-height: 70%;
+  
+  }
+
+
+
+  //div que contem as questoes e o botão a parte
+  form {
+
+    text-align: center;
+    // justify-content: center;
+    background-color: #fff;
+    color: #252b04;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+//   input {
+//     background-color: #ffffff;
+//     box-sizing: border-box;
+//     border-radius: 5px;
+//     border: 1px solid #bebed2;
+//     padding: 5px;
+//   }
+ 
+
+
+//div questoes
+  .form-input-container {   
+    background-color: #f8f8f8; 
+    color: #606060;    
+    justify-content: center; 
+    padding: 50px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+//   .form-input-container {
+   
+//     background-color: #ffffff;
+//     display: flex;
+//     justify-content: center;
+//     padding: 10px;
+//   }
