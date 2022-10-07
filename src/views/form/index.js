@@ -5,6 +5,9 @@ import Button from "../../components/button";
 import Input from "../../components/input";
 import "./styles.scss"
 import Modal from "../../components/modal";
+import { db } from "../../firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { useMediaQuery } from 'react-responsive'
 
 let questions = [
   {
@@ -17,58 +20,58 @@ let questions = [
   {
     id: "2",
     inputName: "b",
-    label: "SOBRENOME",
+    label: "Sobrenome:",
     type: "text",
-    placeholder: "SOBRE",
+    placeholder: "Sobrenome",
   },
   {
     id: 3,
     inputName: "c",
-    label: "Gênero",
+    label: "Gênero:",
     type: "radio",
     options: [
       {
         id: "01",
-        label: "feminino",
+        label: "Feminino",
       },
       {
         id: "02",
-        label: "masculino",
-      },
-      {
-        id: "03",
-        label: "prefiro não informar",
+        label: "Masculino",
       },
       {
         id: "04",
-        label: "outros",
+        label: "Outros",
+      },
+      {
+        id: "03",
+        label: "Prefiro não informar",
       },
     ],
   },
   {
     id: "4",
     inputName: "d",
-    label: "Email",
+    label: "E-mail:",
     type: "email",
-    placeholder: "Insira seu email",
+    placeholder: "Insira seu e-mail",
   },
   {
     id: "5",
     inputName: "e",
-    label: "celular",
+    label: "Celular:",
     type: "text",
     placeholder: "(00) 00000-0000",
   },
   {
     id: "6",
     inputName: "f",
-    label: "Data Nascimento do PET",
+    label: "Data Nascimento do PET:",
     type: "date",
   },
   {
     id: 7,
     inputName: "g",
-    label: "Espécie",
+    label: "Espécie:",
     type: "radio",
     options: [
       {
@@ -97,28 +100,46 @@ function Form() {
 const onSubmitForm = async (e) => {
     e.preventDefault();
 
-    // if (
-    //     !nome ||
-    //     !sobrenome.length ||
-    //     !dataNascPet.length ||
-    //     !genero.length ||
-    //     !celular.length ||
-    //     !especie.length ||
-    //     !email.length
-    //   ) {
-    //     alert("Preencha todos os campos corretamente");
-    //     return;
-    //   }
+    if (
+        !nome ||
+        !sobrenome.length ||
+        !dataNascPet.length ||
+        !genero.length ||
+        !celular.length ||
+        !especie.length ||
+        !email.length
+      ) {
+        alert("Preencha todos os campos corretamente");
+        return;
+      }
 
 
 
 
     //  Parte Banco de DADOS
 
-
-    //   try {
-    //     await addDoc(collection(db, "respostas"), {
-    //      }
+    try {
+      await addDoc(collection(db, "respostas"), {
+        
+        nome: nome,
+        sobrenome: sobrenome,
+        dataNascPet: dataNascPet,
+        genero: genero,
+        celular: celular,
+        especie: especie,
+        email: email,
+      });
+      setNome("");
+      setSobrenome("");
+      setDataNascPet("");
+      setGenero("");
+      setCelular("");
+      setEspecie("");
+      setEmail("");
+      document.getElementsByTagName("form")[0].reset();
+    } catch (err) {
+      alert(err);
+    }
       setShowModal(true);
   };
 
@@ -152,6 +173,10 @@ const onSubmitForm = async (e) => {
   };
 
 
+
+  
+
+
   return (  
        
   <div className="form-container">
@@ -160,9 +185,9 @@ const onSubmitForm = async (e) => {
   <div className="form-header">         
     <img src="https://hubbr.app/rc_img/CONVITE_v03.png" alt="" width="600px"
           height="309px"/>  
-    <p >
+    <div >
         <h1>FAÇA SEU CREDENCIAMENTO</h1>
-      </p>
+      </div>
       <p >FAÇA O CIRCUITO E PARTICIPE DAS</p>
       <p >NOSSAS ATIVIDADES!</p>
   </div>
@@ -171,7 +196,7 @@ const onSubmitForm = async (e) => {
       ({ id, inputName, label, options, type, placeholder }) => (
         <div className="form-input-container" key={id}>
           <div className="input-container">
-            <h2>{label}</h2>
+            <label className="input-label">{label}</label>
             <div className="inputs-container">
               {type === "radio" ? (
                 options.map(({ id: optionId, label }) => (
@@ -199,13 +224,13 @@ const onSubmitForm = async (e) => {
       )
     )}
     <Button type="submit">Enviar</Button>
-    <p>SAÚDE É O PRINCÍPIO DA VIDA</p>
-     <p>
+    <p className="t5">SAÚDE É O PRINCÍPIO DA VIDA</p>
+     <div>
         <b>SAÚDE É O PRINCÍPIO DA</b> 
-        <h3>ROYAL CANIN®</h3>
-      </p>
-      <img src="https://hubbr.app/rc_img/CONVITE_v03.png" alt="header" width="600px" height="309px"
-      />
+        <h3>ROYAL CANIN<sup>®</sup></h3>
+      </div>
+      
+    
   </form>
 </div>
 );
