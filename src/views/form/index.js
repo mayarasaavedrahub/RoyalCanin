@@ -7,7 +7,7 @@ import "./styles.scss"
 import Modal from "../../components/modal";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { useMediaQuery } from 'react-responsive'
+
 
 let questions = [
   {
@@ -23,6 +23,12 @@ let questions = [
     label: "Sobrenome:",
     type: "text",
     placeholder: "Sobrenome",
+  },
+  {
+    id: "7",
+    inputName: "g",
+    label: "Data Nascimento:",
+    type: "date",
   },
   {
     id: 3,
@@ -68,9 +74,10 @@ let questions = [
     label: "Data Nascimento do PET:",
     type: "date",
   },
+
   {
-    id: 7,
-    inputName: "g",
+    id: 8,
+    inputName: "h",
     label: "Espécie:",
     type: "radio",
     options: [
@@ -94,6 +101,7 @@ function Form() {
     const [genero, setGenero] = useState("");
     const [celular, setCelular] = useState("");
     const [dataNascPet, setDataNascPet] = useState("");
+    const [dataNascTutor, setDataNascTutor] = useState("");
     const [especie, setEspecie] = useState("");
     const [email, setEmail] = useState("");
 
@@ -103,10 +111,11 @@ const onSubmitForm = async (e) => {
     if (
         !nome ||
         !sobrenome.length ||
-        !dataNascPet.length ||
+        
         !genero.length ||
         !celular.length ||
-        !especie.length ||
+       
+        !dataNascTutor.length ||
         !email.length
       ) {
         alert("Preencha todos os campos corretamente");
@@ -127,6 +136,7 @@ const onSubmitForm = async (e) => {
         genero: genero,
         celular: celular,
         especie: especie,
+        dataNascTutor: dataNascTutor,
         email: email,
       });
       setNome("");
@@ -136,6 +146,7 @@ const onSubmitForm = async (e) => {
       setCelular("");
       setEspecie("");
       setEmail("");
+      setDataNascTutor("");
       document.getElementsByTagName("form")[0].reset();
     } catch (err) {
       alert(err);
@@ -160,10 +171,13 @@ const onSubmitForm = async (e) => {
       case "e":
         setCelular(value);
         break;
-      case "f":
-        setDataNascPet(value);
-        break;
       case "g":
+        setDataNascTutor(value);
+        break;
+      case "f":
+          setDataNascPet(value);
+          break;
+      case "h":
         setEspecie(value);
         break;
 

@@ -1,0 +1,66 @@
+@media only screen and (max-width:768px) {
+    
+    form{
+        width: 85vw;
+    }
+
+    .form-header{
+        width: 80vw;
+    }
+
+    .form-header img {
+        width: 80vw;
+    }
+
+    #container3 .inputs-container{
+        flex-direction: column;
+        align-items: baseline;
+    }
+    
+    .inputs-container{
+        float: none;
+        clear: both;
+    }
+
+    .input-label{
+        text-align: left;
+    }
+
+    h1{
+        font-size: 30px;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    
+    form{
+        width: 87vw;
+    }
+
+    .form-header{
+        width: 87vw;
+    }
+
+    .form-header img {
+        width: 87vw;
+    }
+
+    
+}
+
+@media only screen and (min-width:1024px) {
+    
+    form{
+        width: 60vw;
+    }
+
+    .form-header{
+        width: 60vw;
+    }
+
+    .form-header img {
+        width: 50vw;
+    }
+
+    
+}
