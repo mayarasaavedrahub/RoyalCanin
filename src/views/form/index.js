@@ -64,7 +64,7 @@ let questions = [
   {
     id: "5",
     inputName: "e",
-    label: "Celular:",
+    label: "Celular com DDD (apenas números):",
     type: "text",
     placeholder: "(00) 00000-0000",
   },
@@ -91,6 +91,18 @@ let questions = [
       }
     ],
   },
+ 
+  {
+    id: 9,
+    inputName: "i",   
+    type: "radio",
+    options: [
+      {
+        id: "07",
+        label: "Aceito receber comunicações da Royal Canin e seus parceiros",
+      }
+    ],
+  },
 ];
 
 
@@ -103,6 +115,7 @@ function Form() {
     const [dataNascPet, setDataNascPet] = useState("");
     const [dataNascTutor, setDataNascTutor] = useState("");
     const [especie, setEspecie] = useState("");
+    const [aceite, setAceite] = useState("");
     const [email, setEmail] = useState("");
 
 const onSubmitForm = async (e) => {
@@ -110,11 +123,9 @@ const onSubmitForm = async (e) => {
 
     if (
         !nome ||
-        !sobrenome.length ||
-        
+        !sobrenome.length ||        
         !genero.length ||
-        !celular.length ||
-       
+        !celular.length ||       
         !dataNascTutor.length ||
         !email.length
       ) {
@@ -137,6 +148,7 @@ const onSubmitForm = async (e) => {
         celular: celular,
         especie: especie,
         dataNascTutor: dataNascTutor,
+        aceite: aceite,
         email: email,
       });
       setNome("");
@@ -146,6 +158,7 @@ const onSubmitForm = async (e) => {
       setCelular("");
       setEspecie("");
       setEmail("");
+      setAceite("");
       setDataNascTutor("");
       document.getElementsByTagName("form")[0].reset();
     } catch (err) {
@@ -179,6 +192,9 @@ const onSubmitForm = async (e) => {
           break;
       case "h":
         setEspecie(value);
+        break;
+      case "i":
+        setAceite(value);
         break;
 
       default:
